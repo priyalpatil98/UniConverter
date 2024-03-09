@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'scp_api_app.apps.ScpApiAppConfig'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,22 @@
+{% extends 'partials/base.html' %}
+{% block title %}Currency Converter{% endblock %}
+
+{% block content %}
+<h2>Currency Conversion</h2>
+    <form method="get" action="">
+        Source Currency: <input type="text" name="source_currency" required><br>
+        Amount: <input type="number" name="amount" step="any" required><br>
+        Target Currency: <input type="text" name="target_currency" required><br>
+        <input type="submit" value="Convert">
+    </form>
+
+    {% if data %}
+    <h3>Conversion Result</h3>
+    <p>Converted Amount: {{ data.converted_amount }}</p>
+    <p>Source Currency: {{ data.source_currency }}</p>
+    <p>Amount: {{ data.amount }}</p>
+    <p>Target Currency: {{ data.target_currency }}</p>
+    {% elif error %}
+    <p>Error: {{ error }}</p>
+    {% endif %}
+{% endblock %}
