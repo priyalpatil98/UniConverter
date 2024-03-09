@@ -1,22 +1,36 @@
 {% extends 'partials/base.html' %}
 {% block title %}Currency Converter{% endblock %}
 
+
 {% block content %}
-<h2>Currency Conversion</h2>
+
+<div class="container">
+    <div class="col-md-3 mt-4">
+        <div class="card text-white bg-dark mb-3 text-center">
+            <h4><strong>Currency Conversion</strong></h4>
+        </div>
+
     <form method="get" action="">
-        Source Currency: <input type="text" name="source_currency" required><br>
-        Amount: <input type="number" name="amount" step="any" required><br>
-        Target Currency: <input type="text" name="target_currency" required><br>
+        Source Currency: <input type="text" name="source_currency" required placeholder="Enter Currency eg. EUR, INR..."><br>
+        Amount: <input type="number" name="amount" step="any" required placeholder="Enter Amount"><br>
+        Target Currency: <input type="text" name="target_currency" required placeholder="Enter Currency eg. EUR, INR..."><br>
         <input type="submit" value="Convert">
     </form>
 
+</div>
+
+<div class="col-md-3 mt-4">
+    
     {% if data %}
-    <h3>Conversion Result</h3>
-    <p>Converted Amount: {{ data.converted_amount }}</p>
-    <p>Source Currency: {{ data.source_currency }}</p>
+    <div class="card text-white bg-dark mb-3 text-center">
+        <h4><strong>Conversion Result</strong></h4>
+    </div>
+    <p><strong>Converted Amount: {{ data.converted_amount }}</strong></p>
+    <!-- <p>Source Currency: {{ data.source_currency }}</p>
     <p>Amount: {{ data.amount }}</p>
-    <p>Target Currency: {{ data.target_currency }}</p>
+    <p>Target Currency: {{ data.target_currency }}</p> -->
     {% elif error %}
-    <p>Error: {{ error }}</p>
+    <p><strong>Error: {{ error }}</strong></p>
     {% endif %}
+</div>
 {% endblock %}
