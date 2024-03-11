@@ -5,6 +5,62 @@
 {% block content %}
 
 <div class="container">
+    <!--Currency Coverter Logic-->
+    <div class="col-md-3 mt-4">
+        <div class="card text-white bg-dark mb-3 text-center">
+            <h4><strong>Currency Conversion</strong></h4>
+        </div>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        Source Currency: <input type="text" name="source_currency" required placeholder="Enter Currency eg. EUR, INR..."><br>
+        Amount: <input type="number" name="amount" step="any" required placeholder="Enter Amount"><br>
+        Target Currency: <input type="text" name="target_currency" required placeholder="Enter Currency eg. EUR, INR..."><br>
+        <input type="submit" name="currency_submit" value="Convert Currency">
+    </form>
+
+    <!--Currency Coverter Results Display-->
+    {% if currency_result %}
+    <div class="card text-white bg-dark mb-3 text-center">
+        <h4><strong>Conversion Result</strong></h4>
+    </div>
+    <p><strong>Converted Amount: {{ currency_result.converted_amount }}</strong></p>
+    <!-- <p>Source Currency: {{ data.source_currency }}</p>
+    <p>Amount: {{ data.amount }}</p>
+    <p>Target Currency: {{ data.target_currency }}</p> -->
+    {% elif error %}
+    <p><strong>Error: {{ error }}</strong></p>
+    {% endif %}
+    </div>
+
+    <!--Language Coverter Logic-->
+    <div class="col-md-3 mt-4">
+        <div class="card text-white bg-dark mb-3 text-center">
+            <h4><strong>Language Conversion</strong></h4>
+        </div>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        Text you want to convert: <input type="text" name="text" id="text" required placeholder="Enter Text to Convert"><br>
+        Language You Want to Convert to: <input type="text" name="to" id="to" required placeholder="Enter Language You Want"><br>
+        Language of Input Text: <input type="text" name="from" id="from" required placeholder="Enter Language of Input Text"><br>
+        <input type="submit" name="language_submit" value="Convert Text">
+    </form>
+
+    <pre>{{ context|safe }}</pre>
+
+    <!--Language Coverter Resluts Display-->
+    {% if language_result %}
+    <div class="card text-white bg-dark mb-3 text-center">
+        <h4><strong>Conversion Result</strong></h4>
+    </div>
+    <p><strong>Converted Text: {{ language_result.translatedText }}</strong></p>
+    {% elif error %}
+    <p><strong>Error: {{ error }}</strong></p>
+    {% endif %}
+    </div>
+
+    <!-- Coverter Logic-->
     <div class="col-md-3 mt-4">
         <div class="card text-white bg-dark mb-3 text-center">
             <h4><strong>Currency Conversion</strong></h4>
@@ -17,20 +73,23 @@
         <input type="submit" value="Convert">
     </form>
 
-</div>
-
-<div class="col-md-3 mt-4">
-    
-    {% if data %}
+    <!-- Coverter Results Display-->
+    {% if data2 %}
     <div class="card text-white bg-dark mb-3 text-center">
         <h4><strong>Conversion Result</strong></h4>
     </div>
-    <p><strong>Converted Amount: {{ data.converted_amount }}</strong></p>
+    <p><strong>Converted Amount: {{ data2.converted_amount }}</strong></p>
     <!-- <p>Source Currency: {{ data.source_currency }}</p>
     <p>Amount: {{ data.amount }}</p>
     <p>Target Currency: {{ data.target_currency }}</p> -->
     {% elif error %}
     <p><strong>Error: {{ error }}</strong></p>
     {% endif %}
+    
+
+    </div>
+    
 </div>
+
+
 {% endblock %}

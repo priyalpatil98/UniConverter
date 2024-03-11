@@ -1,7 +1,7 @@
 from django.urls import path
-from scp_api_app.views import currency_converter, index
+from . import views
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('convert/', currency_converter, name='convert'),
+    path('', views.index, name='index'),
+    path('convert/', views.convert, name='convert'),
 ]

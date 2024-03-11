@@ -20,6 +20,13 @@
         padding: 0;
         background-color: #f4f4f4;
     }
+    .container {
+        display: flex;
+    }
+    .col-md-3 {
+        flex: 1;
+        margin-left: 10px;
+    }
     h2 {
         color: #333;
     }
@@ -36,11 +43,11 @@
         box-sizing: border-box;
     }
     input[type=submit] {
-        width: 100%;
+        width: 50%;
         background-color: #4CAF50;
         color: white;
         padding: 14px 20px;
-        margin: 8px 0;
+        margin: 8px 110px;
         border: none;
         border-radius: 4px;
         cursor: pointer;
@@ -54,6 +61,22 @@
             font-size: 16px;
             line-height: 1.6;
         }
+    .container:after {
+        content: "";
+        display: block;
+    }
+    .footer, .container:after {
+        height: 50px; 
+    }
+    .footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        line-height: 40px; /* Aligns text vertically */
+        position: absolute;
+        bottom: 0;
+        width: 97%;
+    }
   </style>
   </head>
   <body>
