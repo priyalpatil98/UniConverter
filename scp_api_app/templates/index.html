@@ -2,5 +2,16 @@
 {% block title %}Price Fetcher APIs{% endblock %}
 
 {% block content %}
-<h1><b>Hello World</b></h1>
+
+<div class="homepage-content">
+    <h2>Welcome to UniConverter</h2>
+    <p>Your go-to app for straightforward conversions including currency, crypto rates, metrics, and more. Select a service below to get started:</p>
+    
+    <div class="services-list">
+        <a href="{% url 'convert' %}" class="service-link">Currency Converter</a>
+        <a href="{% url 'crypto' %}" class="service-link">Crypto Rates</a>
+    </div>
+</div>
+
+
 {% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'partials/base.html' %}
+{% block title %}Live Crypto Rates{% endblock %}
+
+
+{% block content %}
+
+<div class="conatiner1">
+    <h1 class="text-center mt-3"><strong>Top 5 Live Stocks Prices</strong></h1>
+</div>
+<section class="">
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="crypto-rates">
+                    <h3 class="rate-title">Live Stocks Rates in NASDAQ</h3>
+                    <div id="rates"></div>
+                        <p class="rate">1. Bitcoin (BTC): $ {{ crypto_rates.bitcoin.usd }}</p>
+                        <p class="rate">2. Ethereum (ETH): $ {{ crypto_rates.ethereum.usd }}</p>
+                        <p class="rate">3. Monero (XMR): $ {{ crypto_rates.monero.usd }}</p>
+                        <p class="rate">4. Tether (USDT): $ {{ crypto_rates.tether.usd }}</p>
+                        <p class="rate">5. Litecoin (LTC): $ {{ crypto_rates.litecoin.usd }}</p>
+                        <p class="rate">6. Dogecoin (DOGE): $ {{ crypto_rates.dogecoin.usd }}</p>
+                    </div>
+                </div>
+            <div class="col-md-6">
+                <div id="crypto-rates2">
+                    <h3 class="rate-title">Live Stocks Rates in BSE</h3>
+                    <div id="rates2"></div>
+                        <p class="rate">1. Bitcoin (BTC): € {{ crypto_rates.bitcoin.eur }}</p>
+                        <p class="rate">2. Ethereum (ETH): € {{ crypto_rates.ethereum.eur }}</p>
+                        <p class="rate">3. Monero (XMR): € {{ crypto_rates.monero.eur }}</p>
+                        <p class="rate">4. Tether (USDT): € {{ crypto_rates.tether.eur }}</p>
+                        <p class="rate">5. Litecoin (LTC): € {{ crypto_rates.litecoin.eur }}</p>
+                        <p class="rate">6. Dogecoin (DOGE): € {{ crypto_rates.dogecoin.eur }}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="crypto-rates2">
+                        <h3 class="rate-title">Live Stocks Rates in ISE</h3>
+                        <div id="rates2"></div>
+                            <p class="rate">1. Bitcoin (BTC): ₹ {{ crypto_rates.bitcoin.inr }}</p>
+                            <p class="rate">2. Ethereum (ETH): ₹ {{ crypto_rates.ethereum.inr }}</p>
+                            <p class="rate">3. Monero (XMR): ₹ {{ crypto_rates.monero.inr }}</p>
+                            <p class="rate">4. Tether (USDT): ₹ {{ crypto_rates.tether.inr }}</p>
+                            <p class="rate">5. Litecoin (LTC): ₹ {{ crypto_rates.litecoin.inr }}</p>
+                            <p class="rate">6. Dogecoin (DOGE): ₹ {{ crypto_rates.dogecoin.inr }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="crypto-rates2">
+                            <h3 class="rate-title">Live Crypto Rates in LSE</h3>
+                            <div id="rates2"></div>
+                                <p class="rate">1. Bitcoin (BTC): £ {{ crypto_rates.bitcoin.gbp }}</p>
+                                <p class="rate">2. Ethereum (ETH): £ {{ crypto_rates.ethereum.gbp }}</p>
+                                <p class="rate">3. Monero (XMR): £ {{ crypto_rates.monero.gbp }}</p>
+                                <p class="rate">4. Tether (USDT): £ {{ crypto_rates.tether.gbp }}</p>
+                                <p class="rate">5. Litecoin (LTC): £ {{ crypto_rates.litecoin.gbp }}</p>
+                                <p class="rate">6. Dogecoin (DOGE): £ {{ crypto_rates.dogecoin.gbp }}</p>
+                            </div>
+                        </div>
+            </div>
+        </div>
+</section>
+
+{% endblock %}

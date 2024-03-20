@@ -63,7 +63,7 @@
         }
     .container:after {
         content: "";
-        display: block;
+        display: contents;
     }
     .footer, .container:after {
         height: 50px; 
@@ -73,9 +73,73 @@
         color: white;
         text-align: center;
         line-height: 40px; /* Aligns text vertically */
-        position: absolute;
+        position:fixed;
         bottom: 0;
         width: 97%;
+    }
+    #crypto-rates {
+        padding: 20px;
+        background-color: #474d4f;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        opacity: 0.9;
+    }
+
+    #crypto-rates2 {
+        padding: 20px;
+        background-color: #474d4f;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        opacity: 0.9;
+    }
+
+    .rate {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+    .rate2 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #ffffff;
+    }
+
+    .rate-title {
+        margin-bottom: 10px;
+        text-align: center;
+        color: #ffffff;
+        font-weight: bold;
+    }
+    .homepage-content {
+        padding-top: 175px;
+        text-align: center;
+        margin: auto;
+        max-width: 800px;
+    }
+
+    .services-list {
+        margin-top: 20px;
+    }
+
+    .service-link {
+        display: inline-block;
+        background-color: black;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 10px 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .service-link:hover {
+        background-color: white;
+        color: black;
+        border: 1px solid black;
     }
   </style>
   </head>

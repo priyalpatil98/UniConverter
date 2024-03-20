@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 import requests
+import datetime
 
 
 # Create your views here.
@@ -72,3 +73,61 @@ def language_converter(text, to, from1):
         
         except Exception as e:
             error = 'Failed to connect to the API. Try Again!'
+
+def crypto_rates(request):
+     
+     context = {}
+     
+     url= "https://api.coingecko.com/api/v3/simple/price"
+
+     params = {
+        'ids': 'bitcoin,ethereum,monero,tether,litecoin,dogecoin',
+        'vs_currencies': 'usd,eur,inr,gbp',
+    }
+     
+     try: 
+          response = requests.get(url, params=params)
+          response.raise_for_status()
+
+          context['crypto_rates'] = response.json()
+          
+     except request.RequestException as e:
+          context['error'] = str(e)
+     
+     return render(request, 'crypto.html', context)
+
+def stocks_rates(request):
+     
+     context = {}
+
+     base_url = 'https://www.alphavantage.co/query'
+     api_key = 'BLNVJMOHI1QWSINN'
+
+     prices = {}
+     current_date = datetime.date.today()
+
+     stocks = {
+        'GOOGL': 'NASDAQ',  # Example for New York Exchange
+        'RELIANCE.BSE': 'BSE',  # Example for Bombay Stock Exchange
+        'TCS.NSE': 'NSE',  # Example for National Stock Exchange of India
+        'AAPL': 'NASDAQ',  # Another example for New York Exchange
+        'CRH.IR': 'Euronext Dublin',  # Example for a European exchange (Ireland)
+    }
+     
+     for symbol, exchange in stocks.items():
+        params = {
+            'function': 'TIME_SERIES_DAILY',
+            'symbol': symbol,
+            'apikey': api_key
+        }
+        response = requests.get(base_url, params=params)
+        if response.status_code == 200:
+            data = response.json()
+            prices[symbol] = {
+                'price': data["Time Series (Daily)"][current_date]["1. open"],
+                'exchange': exchange
+            }
+            context['stocks_rates'] = data
+    
+     return render(request, 'stocks.html', context)
+
