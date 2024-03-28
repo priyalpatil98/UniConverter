@@ -25,12 +25,41 @@
         <h4><strong>Conversion Result</strong></h4>
     </div>
     <p><strong>Converted Amount: {{ currency_result.converted_amount }}</strong></p>
-    <!-- <p>Source Currency: {{ data.source_currency }}</p>
-    <p>Amount: {{ data.amount }}</p>
-    <p>Target Currency: {{ data.target_currency }}</p> -->
+
     {% elif error %}
     <p><strong>Error: {{ error }}</strong></p>
     {% endif %}
+    </div>
+
+    <!--Co-ordinates Coverter Logic-->
+    <div class="col-md-3 mt-4">
+        <div class="card text-white bg-dark mb-3 text-center">
+            <h4><strong>Co-ordinates Conversion</strong></h4>
+        </div>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        To: <input type="text" name="to" value= "name" required><br>
+        Latitude: <input type="text" name="latitude" required placeholder="Enter Latitude"><br>
+        Longitude: <input type="text" name="longitude" required placeholder="Enter Longitude"><br>
+
+        <!-- Location: <input type="text" name="name" required placeholder="Enter Location"><br> -->
+        <input type="submit" name="coordinates_submit" value="Convert">
+    </form>
+
+    <!-- Co-ordianates Coverter Results Display-->
+    {% if coordinates_result %}
+    <div class="card text-white bg-dark mb-3 text-center">
+        <h4><strong>Conversion Result</strong></h4>
+    </div>
+    <p><strong>Location: {{ coordinates_result.address }}</strong></p>
+    <!-- <p><strong>Longitude {{ coordinates_result.longitude }}</strong></p> -->
+
+    {% elif error %}
+    <p><strong>Error: {{ error }}</strong></p>
+    {% endif %}
+    
+
     </div>
 
     <!--Language Coverter Logic-->
@@ -60,34 +89,7 @@
     {% endif %}
     </div>
 
-    <!-- Coverter Logic-->
-    <div class="col-md-3 mt-4">
-        <div class="card text-white bg-dark mb-3 text-center">
-            <h4><strong>Currency Conversion</strong></h4>
-        </div>
-
-    <form method="get" action="">
-        Source Currency: <input type="text" name="source_currency" required placeholder="Enter Currency eg. EUR, INR..."><br>
-        Amount: <input type="number" name="amount" step="any" required placeholder="Enter Amount"><br>
-        Target Currency: <input type="text" name="target_currency" required placeholder="Enter Currency eg. EUR, INR..."><br>
-        <input type="submit" value="Convert">
-    </form>
-
-    <!-- Coverter Results Display-->
-    {% if data2 %}
-    <div class="card text-white bg-dark mb-3 text-center">
-        <h4><strong>Conversion Result</strong></h4>
-    </div>
-    <p><strong>Converted Amount: {{ data2.converted_amount }}</strong></p>
-    <!-- <p>Source Currency: {{ data.source_currency }}</p>
-    <p>Amount: {{ data.amount }}</p>
-    <p>Target Currency: {{ data.target_currency }}</p> -->
-    {% elif error %}
-    <p><strong>Error: {{ error }}</strong></p>
-    {% endif %}
     
-
-    </div>
     
 </div>
 

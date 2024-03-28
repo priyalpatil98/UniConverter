@@ -26,7 +26,22 @@ def convert(request):
         to = request.POST.get('to')
         from1 = request.POST.get('from')
 
+        print(request.POST)
+
         context['language_result'] = language_converter(text, to, from1)
+        print([context])
+
+    elif 'coordinates_submit' in request.POST:
+        to = request.POST.get('to')
+        latitude = request.POST.get('latitude')
+        longitude = request.POST.get('longitude')
+
+        # name = request.POST.get('name')
+
+        print(request.POST)
+
+        context['coordinates_result'] = coordinates_converter(to,latitude,longitude)
+        print([context])
         
     return render(request, 'currency_converter.html', context)
 
@@ -63,6 +78,29 @@ def language_converter(text, to, from1):
             'text': text,
             'to': to,
             'from': from1
+        }
+
+        try:
+            response = requests.post(api, json=params)
+
+            if response.status_code == 200:
+                result = response.json()
+                return result
+            else:
+                error = 'API request failed with status code {}'.format(response.status_code)
+                return error
+        
+        except Exception as e:
+            error = 'Failed to connect to the API. Try Again!'
+
+def coordinates_converter(to, latitude, longitude):        
+
+        api = "http://evntz-node-api-ra-ie.ap-south-1.elasticbeanstalk.com/location/coordinates"
+
+        params = {
+            'to': to,
+            'latitude': latitude,
+            'longitude': longitude
         }
 
         try:
