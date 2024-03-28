@@ -10,14 +10,16 @@ def index(request):
 
 def convert(request):
     context = {}
-    print(request)
-
+    
     if 'currency_submit' in request.POST:
         source_currency = request.POST.get('source_currency')
         amount = request.POST.get('amount')
         target_currency = request.POST.get('target_currency')
 
+        print(request.POST)
+
         context['currency_result'] = currency_converter(source_currency, amount, target_currency)
+        print([context])
 
     elif 'language_submit' in request.POST:
         text = request.POST.get('text')
@@ -30,7 +32,9 @@ def convert(request):
 
 def currency_converter(source_currency, amount, target_currency):
 
-        api_url = "https://w7u4eh9pg1.execute-api.eu-west-2.amazonaws.com/PROD/x22209573_currency_converter"
+        #api_url = "https://w7u4eh9pg1.execute-api.eu-west-2.amazonaws.com/PROD/x22209573_currency_converter"
+
+        api_url = "https://f44dxfgsya.execute-api.eu-west-2.amazonaws.com/default/convert"
 
         params = {
             'source_currency': source_currency,
@@ -39,7 +43,7 @@ def currency_converter(source_currency, amount, target_currency):
         }
 
         try:
-            response = requests.post(api_url, params=params)
+            response = requests.post(api_url, json=params)
 
             if response.status_code == 200:
                 result = response.json()
