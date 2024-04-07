@@ -138,23 +138,23 @@ def crypto_rates(request):
      
      return render(request, 'crypto.html', context)
 
-def stocks_rates(request):
+# def stocks_rates(request):
      
-     context = {}
+#      context = {}
 
-     base_url = 'https://www.alphavantage.co/query'
-     api_key = 'BLNVJMOHI1QWSINN'
+#      base_url = 'https://www.alphavantage.co/query'
+#      api_key = 'BLNVJMOHI1QWSINN'
 
-     prices = {}
-     current_date = datetime.date.today()
+#      prices = {}
+#      current_date = datetime.date.today()
 
-     stocks = {
-        'GOOGL': 'NASDAQ',  # Example for New York Exchange
-        'RELIANCE.BSE': 'BSE',  # Example for Bombay Stock Exchange
-        'TCS.NSE': 'NSE',  # Example for National Stock Exchange of India
-        'AAPL': 'NASDAQ',  # Another example for New York Exchange
-        'CRH.IR': 'Euronext Dublin',  # Example for a European exchange (Ireland)
-    }
+#      stocks = {
+#         'GOOGL': 'NASDAQ',  # Example for New York Exchange
+#         'RELIANCE.BSE': 'BSE',  # Example for Bombay Stock Exchange
+#         'TCS.NSE': 'NSE',  # Example for National Stock Exchange of India
+#         'AAPL': 'NASDAQ',  # Another example for New York Exchange
+#         'CRH.IR': 'Euronext Dublin',  # Example for a European exchange (Ireland)
+#     }
      
      for symbol, exchange in stocks.items():
         params = {
